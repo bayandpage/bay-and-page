@@ -72,9 +72,3 @@ h2 {
 }
 .hours li:last-child { border-bottom: 0; }
 a { color: var(--accent); }
-.site-footer {
-  border-top: 1px solid var(--line);
-  padding: 1.5rem 0 2.5rem;
-  color: var(--muted);
-  font-size: 0.95rem;
-}
