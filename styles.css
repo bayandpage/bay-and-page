@@ -317,3 +317,10 @@ body { min-height: 100vh; background-repeat: no-repeat; }
 
 /* Book rail is hidden until real covers are added. To show it, delete this rule. */
 .rail-books { display: none !important; }
+
+/* Brand rail: logos grouped beside the cards (below the header line) */
+@media (min-width: 1240px) {
+  .rail-brands { top: 25.1rem; justify-content: space-between; }
+  .rail-brands .rail-slot { flex: 0 0 auto; }
+}
+
