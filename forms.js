@@ -63,10 +63,11 @@ const WEB3FORMS_ACCESS_KEY = '1150134e-cc2d-46fe-9e99-6ea8c503a185';
   // Wire up one form: fields() returns the readable named fields to send.
   function setup(formId, subjectFor, fields) {
     var form = document.getElementById(formId);
-    if (!form) return;
+    if (!form) return; // this form is not on the current page
     var button = form.querySelector('button[type="submit"]');
-    var buttonText = button.textContent;
     var done = form.parentNode.querySelector(".form-success");
+    if (!button || !done || !form.elements.botcheck) return;
+    var buttonText = button.textContent;
 
     done.querySelector(".send-another").addEventListener("click", function () {
       done.hidden = true;

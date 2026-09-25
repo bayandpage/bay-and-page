@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Special Orders / Wanted List | Bay &amp; Page</title>
+  <meta name="description" content="Send Bay &amp; Page your Special Orders / Wanted List of titles or ISBNs and quantities. We reply by email with availability, pricing, and shipping." />
+  <link rel="icon" href="/favicon.ico" sizes="any" />
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <link rel="icon" href="/favicon-32.png" type="image/png" sizes="32x32" />
+  <link rel="icon" href="/favicon-16.png" type="image/png" sizes="16x16" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=Source+Sans+3:wght@400;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/styles.css?v=5" />
+</head>
+<body>
+  <header class="site-header site-header-sub">
+    <div class="wrap">
+      <p class="eyebrow">Tampa, Florida · Wholesale</p>
+      <h1 class="site-title"><a class="home-link brand" href="/"><img class="logo-mark" src="/logo-mark.svg" alt="Bay &amp; Page logo" width="40" height="40" /><span>Bay &amp; Page</span></a></h1>
+      <p class="tagline">Books &amp; stationery for retailers, schools, and businesses</p>
+      <p class="back-link"><a href="/">← Back to home</a></p>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section class="card section" id="special-orders">
+      <h2>Special Orders / Wanted List</h2>
+      <p class="lead">
+        Looking for specific titles or supplies? Send us your Special Orders / Wanted List
+        and we'll check availability for you.
+      </p>
+      <ol class="steps">
+        <li><span class="step-num">1</span><div><strong>Send your list</strong><br />Titles or ISBNs with the quantity you need.</div></li>
+        <li><span class="step-num">2</span><div><strong>We reply by email</strong><br />With availability, pricing, and shipping.</div></li>
+        <li><span class="step-num">3</span><div><strong>Approve</strong><br />We invoice and ship your order.</div></li>
+      </ol>
+      <form id="list-form" class="form" aria-label="Special Orders / Wanted List" novalidate>
+        <div class="form-grid">
+          <label><span class="field-label">Business/school name <span class="req" aria-hidden="true">*</span></span>
+            <input type="text" name="business" autocomplete="organization" maxlength="200" required />
+          </label>
+          <label><span class="field-label">Contact name <span class="req" aria-hidden="true">*</span></span>
+            <input type="text" name="contact" autocomplete="name" maxlength="200" required />
+          </label>
+          <label><span class="field-label">Email <span class="req" aria-hidden="true">*</span></span>
+            <input type="email" name="email" autocomplete="email" maxlength="254" required />
+          </label>
+          <label><span class="field-label">Needed by <span class="optional">(optional)</span></span>
+            <input type="date" name="needed" />
+          </label>
+        </div>
+        <label><span class="field-label">Titles and quantities <span class="req" aria-hidden="true">*</span></span>
+          <textarea name="list" rows="8" maxlength="20000" required placeholder="Title or ISBN, quantity — one per line&#10;9780143127741, 25&#10;Composition notebooks, wide ruled, 100"></textarea>
+        </label>
+        <label><span class="field-label">Notes</span>
+          <textarea name="notes" rows="3" maxlength="5000" placeholder="Shipping address, delivery details, substitutions OK, etc."></textarea>
+        </label>
+        <!-- Spam honeypot (Web3Forms): hidden from people, left unchecked -->
+        <input type="checkbox" name="botcheck" class="hidden" style="display: none;" tabindex="-1" autocomplete="off" aria-hidden="true" />
+        <div class="form-actions">
+          <button type="submit" class="btn">Send Special Orders / Wanted List</button>
+          <p class="form-note">We'll reply by email.
+            Or email <a href="mailto:orders@bayandpage.com">orders@bayandpage.com</a> directly — spreadsheets welcome.</p>
+        </div>
+        <p class="form-status" role="status" aria-live="polite"></p>
+      </form>
+      <div class="form-success" role="status" aria-live="polite" hidden>
+        <p>Thank you — we received your request and will reply by email from orders@bayandpage.com.</p>
+        <button type="button" class="btn btn-ghost send-another">Send another request</button>
+      </div>
+    </section>
+  </main>
+
+  <script src="/forms.js?v=5"></script>
+</body>
+</html>

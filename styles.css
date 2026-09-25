@@ -199,3 +199,32 @@ html { scroll-behavior: smooth; }
 .form-grid { align-items: start; }
 .field-help { font-weight: 400; font-size: 0.88rem; color: var(--muted); line-height: 1.4; }
 .form-grid .span-all { grid-column: 1 / -1; }
+
+/* ---- Multi-page: home buttons and subpage header ---- */
+.quick-nav-home { gap: 0.75rem; margin-top: 1.75rem; }
+.quick-nav-home .btn { padding: 0.85rem 1.4rem; font-size: 1.05rem; }
+.quick-nav-home .btn-ghost { border-color: var(--accent); }
+.site-header-sub { padding: 2.25rem 0 1.5rem; }
+.site-title {
+  font-family: Fraunces, Georgia, serif;
+  font-size: clamp(1.9rem, 5vw, 2.6rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+  margin: 0;
+}
+.home-link { color: var(--ink); text-decoration: none; }
+.home-link:hover { color: var(--accent); }
+.site-header-sub .tagline { font-size: 1rem; margin-top: 0.5rem; }
+.back-link { margin: 1rem 0 0; font-size: 0.95rem; }
+main > .section:first-child { margin-top: 0; }
+
+/* ---- Logo mark (B&P monogram) left of the site title ---- */
+.brand { display: flex; align-items: center; gap: 0.3em; }
+a.brand { display: inline-flex; }
+.logo-mark {
+  width: 1.05em;
+  height: 1.05em;
+  flex: none;
+  display: block;
+}
