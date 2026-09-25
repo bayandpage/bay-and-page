@@ -341,3 +341,17 @@ body { min-height: 100vh; background-repeat: no-repeat; }
   }
 }
 @media (min-width: 1240px) { .rail-books .photo-card:last-child img { object-position: center 88%; } }
+
+/* Brand photo rail (right): photos as tiles, Pentel as white logo on red */
+@media (min-width: 1240px) {
+  .rail-brands .rail-slot { flex: 1 1 0; }
+  .rail .photo-card {
+    overflow: hidden;
+    border-radius: 14px;
+    border: 1px solid var(--line);
+    box-shadow: 0 10px 30px rgba(28, 42, 36, 0.06);
+  }
+  .rail-brands .photo-card img { width: 100%; height: 100%; object-fit: cover; }
+  .rail-brands .pentel-card { background: #e4002b; }
+  .rail-brands .pentel-card img { width: 72%; height: auto; object-fit: contain; filter: brightness(0) invert(1); }
+}
