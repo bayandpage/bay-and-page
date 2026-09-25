@@ -203,7 +203,7 @@ const WEB3FORMS_ACCESS_KEY = '1150134e-cc2d-46fe-9e99-6ea8c503a185';
     function (f) { return "Special Orders / Wanted List – " + val(f, "business"); },
     function (f) {
       return [
-        ["Business/school name", val(f, "business")],
+        ["Business or organization name", val(f, "business")],
         ["Contact name", val(f, "contact")],
         ["Needed by", val(f, "needed")],
         ["Titles and quantities (title or ISBN, quantity)", val(f, "list")],
