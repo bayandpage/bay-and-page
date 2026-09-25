@@ -1,6 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 300" width="200" height="300">
-  <!-- PREVIEW PLACEHOLDER ONLY: replace with a real book cover (see the comment above the book rail in /index.html) -->
-  <rect x="1" y="1" width="198" height="298" rx="6" fill="#fffdf8" stroke="#d9cfc0" stroke-width="2"/>
-  <rect x="14" y="14" width="172" height="272" rx="3" fill="none" stroke="#e6dfd2" stroke-width="1.5" stroke-dasharray="6 5"/>
-  <text x="100" y="158" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="26" fill="#5c6b64">Cover</text>
-</svg>
