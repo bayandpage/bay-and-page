@@ -13,9 +13,10 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=Source+Sans+3:wght@400;600&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="/styles.css?v=6" />
+  <link rel="stylesheet" href="/styles.css?v=7" />
 </head>
 <body>
+  <div class="page">
   <header class="site-header">
     <div class="wrap">
       <p class="eyebrow">Tampa, Florida · Wholesale</p>
@@ -72,6 +73,36 @@
         </p>
       </article>
     </section>
+
+    <!-- Brand logos as a small row on narrower screens (the right rail shows them on wide screens) -->
+    <section class="brands-row" aria-label="Brands we carry">
+      <p class="brands-row-label">Brands we carry</p>
+      <div class="brands-row-logos">
+        <img src="/img/brands/zebra.svg" alt="Zebra" width="238" height="33" />
+        <img src="/img/brands/pilot.svg" alt="Pilot" width="200" height="60" />
+        <img src="/img/brands/pentel.svg" alt="Pentel" width="222" height="72" />
+      </div>
+    </section>
   </main>
+
+  <!--
+    Side rails (desktop only, 1240px and wider). They sit in the page margins and never move the centered content.
+    BOOK COVERS: save a cover in /img/books/ (portrait JPG/WebP, about 400x600, under ~150 KB), then in a slot below
+    change src to the file and alt to the book title, e.g.
+      <figure class="rail-slot"><img src="/img/books/charlottes-web.jpg" alt="Charlotte's Web" width="400" height="600" /></figure>
+    Covers are scaled to fit without cropping. Delete /img/books/cover-placeholder.svg once all three are replaced.
+  -->
+  <aside class="rail rail-books" aria-label="Featured books">
+      <figure class="rail-slot"><img src="/img/books/cover-placeholder.svg" alt="Cover placeholder" width="200" height="300" /></figure>
+      <figure class="rail-slot"><img src="/img/books/cover-placeholder.svg" alt="Cover placeholder" width="200" height="300" /></figure>
+      <figure class="rail-slot"><img src="/img/books/cover-placeholder.svg" alt="Cover placeholder" width="200" height="300" /></figure>
+  </aside>
+
+  <aside class="rail rail-brands" aria-label="Brands we carry">
+    <div class="rail-slot"><div class="brand-card"><img src="/img/brands/zebra.svg" alt="Zebra" width="238" height="33" /></div></div>
+    <div class="rail-slot"><div class="brand-card"><img src="/img/brands/pilot.svg" alt="Pilot" width="200" height="60" /></div></div>
+    <div class="rail-slot"><div class="brand-card"><img src="/img/brands/pentel.svg" alt="Pentel" width="222" height="72" /></div></div>
+  </aside>
+  </div>
 </body>
 </html>

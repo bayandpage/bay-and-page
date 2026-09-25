@@ -231,3 +231,89 @@ a.brand { display: inline-flex; }
 
 /* Short pages (e.g. thank-you): keep the soft background gradient from repeating as a visible block */
 body { min-height: 100vh; background-repeat: no-repeat; }
+
+/* ---- Home page side rails (books left, brands right) ----
+   The rails are absolutely positioned in the page margins, so the centered
+   content keeps exactly the same position and width. */
+.page { position: relative; }
+.rail { display: none; }
+.rail-slot { margin: 0; }
+.brand-card {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  box-shadow: 0 10px 30px rgba(28, 42, 36, 0.04);
+}
+
+@media (min-width: 1240px) {
+  .rail {
+    position: absolute;
+    top: 4.5rem;            /* lines up with the top of the header text */
+    bottom: 3.5rem;         /* lines up with the bottom of the last card */
+    width: min(160px, calc((100% - 920px) / 2 - 56px));
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  .rail-books  { right: calc(50% + 460px + 28px); }
+  .rail-brands { left: calc(50% + 460px + 28px); }
+  .rail .rail-slot {
+    flex: 1 1 0;
+    min-height: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .rail-books img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    filter: drop-shadow(0 8px 16px rgba(28, 42, 36, 0.10));
+  }
+  .rail-brands .brand-card {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .rail-brands img { display: block; width: 78%; height: auto; }
+  .brands-row { display: none; }
+}
+
+/* Narrower screens: logos as a small row after the cards */
+.brands-row {
+  margin-top: 1rem;
+  text-align: center;
+}
+.brands-row-label {
+  margin: 0 0 0.6rem;
+  font-size: 0.8rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+  font-weight: 600;
+}
+.brands-row-logos {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(1rem, 5vw, 2.5rem);
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 0.9rem 1.2rem;
+}
+.brands-row-logos img {
+  display: block;
+  flex: 0 1 auto;
+  min-width: 0;
+  width: auto;
+  height: 28px;
+  max-width: 30%;
+  object-fit: contain;
+}
+
+/* Book rail is hidden until real covers are added. To show it, delete this rule. */
+.rail-books { display: none !important; }
