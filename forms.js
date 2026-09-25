@@ -127,6 +127,20 @@ const WEB3FORMS_ACCESS_KEY = '1150134e-cc2d-46fe-9e99-6ea8c503a185';
       ];
     });
 
+  // ---- Schools & Businesses Account ----
+  setup("schools-form",
+    function (f) { return "Schools & Businesses Account – " + val(f, "organization"); },
+    function (f) {
+      return [
+        ["Organization name", val(f, "organization")],
+        ["Contact name", val(f, "contact")],
+        ["Address", val(f, "address")],
+        ["Type", val(f, "type")],
+        ["Tax-exempt certificate number", val(f, "exempt")],
+        ["What do you need?", val(f, "needs")]
+      ];
+    });
+
   // ---- Special Orders / Wanted List ----
   setup("list-form",
     function (f) { return "Special Orders / Wanted List – " + val(f, "business"); },

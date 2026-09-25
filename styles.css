@@ -196,3 +196,6 @@ html { scroll-behavior: smooth; }
 .form-success:focus { outline: none; }
 .btn:disabled { opacity: 0.7; cursor: wait; }
 [hidden] { display: none !important; }
+.form-grid { align-items: start; }
+.field-help { font-weight: 400; font-size: 0.88rem; color: var(--muted); line-height: 1.4; }
+.form-grid .span-all { grid-column: 1 / -1; }
