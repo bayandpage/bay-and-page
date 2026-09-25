@@ -354,3 +354,4 @@ body { min-height: 100vh; background-repeat: no-repeat; }
   .rail-brands .pentel-card { background: #e4002b; }
   .rail-brands .pentel-card img { width: 72%; height: auto; object-fit: contain; filter: brightness(0) invert(1); }
 }
+@media (min-width: 1240px) { .rail-books .photo-card:last-child img { object-position: center 88%; } }
