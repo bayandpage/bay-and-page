@@ -1,5 +1,5 @@
 /* Bay & Page — site forms.
-   Schools & Businesses and Special Orders / Wanted List are sent to
+   Schools & Nonprofits and Special Orders / Wanted List are sent to
    orders@bayandpage.com through Web3Forms (https://web3forms.com).
    The wholesale application (with its resale certificate upload) is a
    regular multipart POST to FormSubmit (https://formsubmit.co); this file
@@ -184,9 +184,9 @@ const WEB3FORMS_ACCESS_KEY = '1150134e-cc2d-46fe-9e99-6ea8c503a185';
     });
   })();
 
-  // ---- Schools & Businesses Account ----
+  // ---- Schools & Nonprofits Account ----
   setup("schools-form",
-    function (f) { return "Schools & Businesses Account – " + val(f, "organization"); },
+    function (f) { return "Schools & Nonprofits Account – " + val(f, "organization"); },
     function (f) {
       return [
         ["Organization name", val(f, "organization")],

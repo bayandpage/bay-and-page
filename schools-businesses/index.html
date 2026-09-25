@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Schools &amp; Businesses Account | Bay &amp; Page</title>
-  <meta name="description" content="Open a Bay &amp; Page account for your school, district, office, or organization buying books and stationery for its own use. Tax-exempt certificates accepted." />
+  <title>Schools &amp; Nonprofits Account | Bay &amp; Page</title>
+  <meta name="description" content="Open a Bay &amp; Page account for your tax-exempt school, district, nonprofit, or church buying books and stationery for its own use." />
   <link rel="icon" href="/favicon.ico" sizes="any" />
   <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
   <link rel="icon" href="/favicon-32.png" type="image/png" sizes="32x32" />
@@ -13,7 +13,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=Source+Sans+3:wght@400;600&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="/styles.css?v=16" />
+  <link rel="stylesheet" href="/styles.css?v=18" />
 </head>
 <body>
   <header class="site-header site-header-sub">
@@ -27,13 +27,18 @@
 
   <main class="wrap">
     <section class="card section" id="schools">
-      <h2>Schools &amp; Businesses Account</h2>
+      <h2>Schools &amp; Nonprofits Account</h2>
       <p class="lead">
-        For schools, districts, offices, and organizations buying books and stationery for their own use.
+        For tax-exempt schools, districts, nonprofits, and churches buying books and stationery for their own use.
       </p>
-      <form id="schools-form" class="form" aria-label="Schools &amp; Businesses Account" novalidate>
+      <div class="tax-note">
+        <h3>Sales tax</h3>
+        <p>This account is for tax-exempt organizations only: schools, districts, nonprofits, and churches with a valid Florida Consumer's Certificate of Exemption (Form DR-14). We keep a copy of your certificate on file, and orders must be paid directly by the organization (school check, purchase order, or organization card). At this time we don't sell to individuals or to businesses buying for their own use.</p>
+        <p>Buying to resell? <a href="/wholesale/">Apply for a wholesale account</a> with your Florida Annual Resale Certificate.</p>
+      </div>
+      <form id="schools-form" class="form" aria-label="Schools &amp; Nonprofits Account" novalidate>
         <div class="form-grid">
-          <label class="span-all"><span class="field-label">Organization name (school, office, or company) <span class="req" aria-hidden="true">*</span></span>
+          <label class="span-all"><span class="field-label">Organization name (school, nonprofit, or church) <span class="req" aria-hidden="true">*</span></span>
             <input type="text" name="organization" autocomplete="organization" maxlength="200" required />
           </label>
           <label><span class="field-label">Contact name <span class="req" aria-hidden="true">*</span></span>
@@ -46,7 +51,6 @@
             <select name="type" required>
               <option value="">Choose one…</option>
               <option>School or district</option>
-              <option>Office or business</option>
               <option>Nonprofit or church</option>
               <option>Other</option>
             </select>
@@ -54,9 +58,9 @@
           <label class="span-all"><span class="field-label">Address <span class="req" aria-hidden="true">*</span></span>
             <input type="text" name="address" autocomplete="street-address" maxlength="300" placeholder="Street, City, State, ZIP" required />
           </label>
-          <label class="span-all"><span class="field-label">Tax-exempt certificate number <span class="optional">(optional)</span></span>
-            <input type="text" name="exempt" maxlength="100" aria-describedby="exempt-help" />
-            <span class="field-help" id="exempt-help">For tax-exempt schools and nonprofits (Florida Consumer's Certificate of Exemption). Other orders include Florida sales tax.</span>
+          <label class="span-all"><span class="field-label">Tax-exempt certificate number <span class="req" aria-hidden="true">*</span></span>
+            <input type="text" name="exempt" maxlength="100" aria-describedby="exempt-help" required />
+            <span class="field-help" id="exempt-help">Your DR-14 certificate number. We'll ask for a copy before your first order.</span>
           </label>
         </div>
         <label><span class="field-label">What do you need? <span class="optional">(optional)</span></span>
@@ -78,6 +82,6 @@
     </section>
   </main>
 
-  <script src="/forms.js?v=16"></script>
+  <script src="/forms.js?v=18"></script>
 </body>
 </html>
