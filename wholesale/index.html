@@ -13,7 +13,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=Source+Sans+3:wght@400;600&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="/styles.css?v=5" />
+  <link rel="stylesheet" href="/styles.css?v=6" />
 </head>
 <body>
   <header class="site-header site-header-sub">
@@ -33,7 +33,7 @@
         <li><strong>Schools and offices welcome</strong> — tax-exempt organizations can send their exemption certificate; other orders include Florida sales tax.</li>
         <li><strong>Mixed titles welcome</strong> — build an order from many different titles.</li>
         <li><strong>Books and stationery</strong> — including pens, notebooks, and other paper goods.</li>
-        <li><strong>Volume pricing quoted on request</strong> — send us your list and we'll reply with a quote.</li>
+        <li><strong>Two ways to order</strong> — send us your list and we'll reply with a quote, or ask for our current inventory list (Excel) and choose from it.</li>
         <li><strong>Orders and quotes by email</strong> at <a href="mailto:orders@bayandpage.com">orders@bayandpage.com</a>.</li>
       </ul>
     </section>
@@ -44,19 +44,25 @@
         Tell us a little about your business and we'll follow up by email.
         A resale certificate or sales tax ID is required for wholesale accounts.
       </p>
-      <form id="apply-form" class="form" novalidate>
+      <form id="apply-form" class="form" action="https://formsubmit.co/orders@bayandpage.com" method="POST" enctype="multipart/form-data" novalidate>
+        <!-- FormSubmit settings (https://formsubmit.co/documentation). _subject gets the business name added on submit. -->
+        <input type="hidden" name="_subject" value="Wholesale account application" />
+        <input type="hidden" name="_template" value="table" />
+        <input type="hidden" name="_captcha" value="false" />
+        <input type="hidden" name="_next" value="https://bayandpage.com/wholesale/thank-you/" />
+        <input type="hidden" name="_replyto" value="" />
         <div class="form-grid">
           <label><span class="field-label">Business name <span class="req" aria-hidden="true">*</span></span>
-            <input type="text" name="business" autocomplete="organization" maxlength="200" required />
+            <input type="text" name="Business name" autocomplete="organization" maxlength="200" required />
           </label>
           <label><span class="field-label">Contact name <span class="req" aria-hidden="true">*</span></span>
-            <input type="text" name="contact" autocomplete="name" maxlength="200" required />
+            <input type="text" name="Contact name" autocomplete="name" maxlength="200" required />
           </label>
           <label><span class="field-label">Email <span class="req" aria-hidden="true">*</span></span>
             <input type="email" name="email" autocomplete="email" maxlength="254" required />
           </label>
           <label><span class="field-label">Business type <span class="req" aria-hidden="true">*</span></span>
-            <select name="type" required>
+            <select name="Business type" required>
               <option value="">Choose one…</option>
               <option>Bookstore/retailer</option>
               <option>School or district</option>
@@ -65,17 +71,21 @@
             </select>
           </label>
           <label><span class="field-label">City/State <span class="req" aria-hidden="true">*</span></span>
-            <input type="text" name="location" maxlength="200" placeholder="e.g. Tampa, FL" required />
+            <input type="text" name="City/State" maxlength="200" placeholder="e.g. Tampa, FL" required />
           </label>
           <label><span class="field-label">Resale certificate / sales tax ID number <span class="req" aria-hidden="true">*</span></span>
-            <input type="text" name="taxid" maxlength="100" required />
+            <input type="text" name="Resale certificate / sales tax ID" maxlength="100" required />
+          </label>
+          <label class="span-all"><span class="field-label">Upload resale certificate <span class="req" aria-hidden="true">*</span></span>
+            <input type="file" name="attachment" accept=".pdf,.jpg,.jpeg,.png" data-max-mb="10" aria-describedby="certificate-help" required />
+            <span class="field-help" id="certificate-help">PDF, JPG, or PNG, up to 10 MB.</span>
           </label>
         </div>
         <label><span class="field-label">What you're looking for</span>
-          <textarea name="looking" rows="4" maxlength="5000" placeholder="Subjects, grade levels, stationery items, approximate quantities…"></textarea>
+          <textarea name="What you're looking for" rows="4" maxlength="5000" placeholder="Subjects, grade levels, stationery items, approximate quantities…"></textarea>
         </label>
-        <!-- Spam honeypot (Web3Forms): hidden from people, left unchecked -->
-        <input type="checkbox" name="botcheck" class="hidden" style="display: none;" tabindex="-1" autocomplete="off" aria-hidden="true" />
+        <!-- Spam honeypot (FormSubmit): hidden from people, left empty -->
+        <input type="text" name="_honey" class="hidden" style="display: none;" tabindex="-1" autocomplete="off" aria-hidden="true" />
         <div class="form-actions">
           <button type="submit" class="btn">Send application</button>
           <p class="form-note">We'll reply by email.
@@ -83,13 +93,9 @@
         </div>
         <p class="form-status" role="status" aria-live="polite"></p>
       </form>
-      <div class="form-success" role="status" aria-live="polite" hidden>
-        <p>Thank you — we received your request and will reply by email from orders@bayandpage.com.</p>
-        <button type="button" class="btn btn-ghost send-another">Send another request</button>
-      </div>
     </section>
   </main>
 
-  <script src="/forms.js?v=5"></script>
+  <script src="/forms.js?v=6"></script>
 </body>
 </html>

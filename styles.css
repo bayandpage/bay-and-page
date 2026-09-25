@@ -228,3 +228,6 @@ a.brand { display: inline-flex; }
   flex: none;
   display: block;
 }
+
+/* Short pages (e.g. thank-you): keep the soft background gradient from repeating as a visible block */
+body { min-height: 100vh; background-repeat: no-repeat; }

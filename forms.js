@@ -1,8 +1,11 @@
-/* Bay & Page — wholesale forms.
-   Submissions are sent to orders@bayandpage.com through Web3Forms
-   (https://web3forms.com). No email app is opened. */
+/* Bay & Page — site forms.
+   Schools & Businesses and Special Orders / Wanted List are sent to
+   orders@bayandpage.com through Web3Forms (https://web3forms.com).
+   The wholesale application (with its resale certificate upload) is a
+   regular multipart POST to FormSubmit (https://formsubmit.co); this file
+   only validates it and shows "Sending…". */
 
-// ---- Paste the Web3Forms access key here (the only place it is needed) ----
+// ---- Web3Forms access key (the only place it is needed) ----
 const WEB3FORMS_ACCESS_KEY = '1150134e-cc2d-46fe-9e99-6ea8c503a185';
 
 (function () {
@@ -23,21 +26,44 @@ const WEB3FORMS_ACCESS_KEY = '1150134e-cc2d-46fe-9e99-6ea8c503a185';
     return el ? el.value.trim() : "";
   }
 
-  // Basic required-field + email validation. Returns true if valid.
+  var FILE_TYPES = { pdf: "application/pdf", jpg: "image/jpeg", jpeg: "image/jpeg", png: "image/png" };
+
+  // Returns an error message for a file input, or "" if it is OK.
+  function fileProblem(el) {
+    var maxMb = parseFloat(el.getAttribute("data-max-mb")) || 10;
+    var f = el.files && el.files[0];
+    if (!f) return el.required ? "Please upload your resale certificate (PDF, JPG, or PNG, up to " + maxMb + " MB)." : "";
+    var ext = (f.name.split(".").pop() || "").toLowerCase();
+    if (!FILE_TYPES[ext] || (f.type && Object.keys(FILE_TYPES).map(function (k) { return FILE_TYPES[k]; }).indexOf(f.type) === -1)) {
+      return "The resale certificate must be a PDF, JPG, or PNG file.";
+    }
+    if (f.size > maxMb * 1024 * 1024) return "The resale certificate file is larger than " + maxMb + " MB. Please upload a smaller file.";
+    return "";
+  }
+
+  // Basic required-field, email, and file validation. Returns true if valid.
   function validate(form) {
-    var firstBad = null;
+    var firstBad = null, fileMsg = "";
     Array.prototype.forEach.call(form.elements, function (el) {
-      if (!el.name || el.name === "botcheck") return;
+      if (!el.name || el.type === "hidden" || el.name === "botcheck" || el.name === "_honey") return;
       var bad = false;
-      if (el.required && !el.value.trim()) bad = true;
-      if (!bad && el.type === "email" && el.value.trim() &&
-          !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(el.value.trim())) bad = true;
+      if (el.type === "file") {
+        var msg = fileProblem(el);
+        if (msg) { bad = true; if (!fileMsg) fileMsg = msg; }
+      } else {
+        if (el.required && !el.value.trim()) bad = true;
+        if (!bad && el.type === "email" && el.value.trim() &&
+            !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(el.value.trim())) bad = true;
+      }
       el.classList.toggle("invalid", bad);
       el.setAttribute("aria-invalid", bad ? "true" : "false");
       if (bad && !firstBad) firstBad = el;
     });
     if (firstBad) {
-      setStatus(form, "error", "Please fill in the highlighted fields (and check the email address).");
+      var others = form.querySelectorAll(".invalid:not([type=file])").length > 0;
+      setStatus(form, "error",
+        others ? "Please fill in the highlighted fields (and check the email address)." + (fileMsg ? " " + fileMsg : "")
+               : fileMsg);
       firstBad.focus();
       return false;
     }
@@ -114,19 +140,49 @@ const WEB3FORMS_ACCESS_KEY = '1150134e-cc2d-46fe-9e99-6ea8c503a185';
     });
   }
 
-  // ---- Wholesale account application ----
-  setup("apply-form",
-    function (f) { return "Wholesale account application – " + val(f, "business"); },
-    function (f) {
-      return [
-        ["Business name", val(f, "business")],
-        ["Contact name", val(f, "contact")],
-        ["Business type", val(f, "type")],
-        ["City/State", val(f, "location")],
-        ["Resale certificate / sales tax ID", val(f, "taxid")],
-        ["What you're looking for", val(f, "looking")]
-      ];
+  // ---- Wholesale account application (FormSubmit, normal multipart POST) ----
+  (function () {
+    var form = document.getElementById("apply-form");
+    if (!form) return; // not on this page
+    var button = form.querySelector('button[type="submit"]');
+    if (!button) return;
+    var buttonText = button.textContent;
+
+    function resetButton() {
+      button.disabled = false;
+      button.textContent = buttonText;
+    }
+
+    // Re-check the file as soon as one is picked, so problems show right away.
+    var fileInput = form.querySelector('input[type="file"]');
+    if (fileInput) {
+      fileInput.addEventListener("change", function () {
+        var msg = fileProblem(fileInput);
+        fileInput.classList.toggle("invalid", !!msg);
+        fileInput.setAttribute("aria-invalid", msg ? "true" : "false");
+        setStatus(form, msg ? "error" : "", msg);
+      });
+    }
+
+    form.addEventListener("submit", function (e) {
+      if (button.disabled || !validate(form)) {
+        e.preventDefault();
+        return;
+      }
+      form.elements._subject.value = "Wholesale account application – " + form.elements["Business name"].value.trim();
+      if (form.elements._replyto) form.elements._replyto.value = form.elements.email.value.trim();
+      button.disabled = true;
+      button.textContent = MSG_SENDING;
+      setStatus(form, "sending", MSG_SENDING);
+      // No preventDefault: the browser posts the form (with the file) to FormSubmit.
     });
+
+    // If the visitor comes back with the Back button, make the form usable again.
+    window.addEventListener("pageshow", function () {
+      resetButton();
+      setStatus(form, "", "");
+    });
+  })();
 
   // ---- Schools & Businesses Account ----
   setup("schools-form",
